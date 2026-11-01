@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowora | Beauty, Care & You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="announcement">
+    ✨ Free shipping on orders above ₹999 ✨
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo" onclick="showPage('home'); return false;">
+      <span>❀</span> Glowora
+      <small>Beauty · Care · You</small>
+    </a>
+
+    <form id="searchForm">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search products, brands..."
+      >
+      <button type="submit">⌕</button>
+    </form>
+
+    <div class="header-links">
+      <button type="button" onclick="showPage('wishlist')">
+        ♡ Wishlist <b id="wishCount">0</b>
+      </button>
+
+      <button type="button" onclick="showPage('login')">
+        ♙ Account
+      </button>
+
+      <button type="button" onclick="showPage('cart')">
+        🛍 Cart <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" onclick="showPage('home'); return false;">Home</a>
+    <a href="#categories" onclick="showPage('home')">Categories</a>
+    <a href="#products" onclick="showPage('home')">Makeup</a>
+
+    <a href="#products"
+       onclick="showPage('home'); filterCategory('Skincare')">
+      Skincare
+    </a>
+
+    <a href="#products"
+       onclick="showPage('home'); filterCategory('Haircare')">
+      Haircare
+    </a>
+
+    <a href="#products"
+       onclick="showPage('home'); filterCategory('Nails')">
+      Nails
+    </a>
+
+    <a href="#products"
+       onclick="showPage('home'); filterCategory('Combo Offers')">
+      Combo Offers
+    </a>
+
+    <a href="#products"
+       onclick="showPage('home'); filterUnder250()">
+      Under ₹250
+    </a>
+
+    <a href="#about" onclick="showPage('home')">About Us</a>
+
+    <button type="button" onclick="showPage('admin')">
+      Admin
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- ================= HOME PAGE ================= -->
+    <section id="home" class="page">
+
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">YOUR BEAUTY, YOUR WAY</p>
+
+          <h1>
+            Discover Your<br>
+            <em>Natural Beauty</em>
+          </h1>
+
+          <p>
+            Premium cosmetics from top brands<br>
+            for a more confident you.
+          </p>
+
+          <button
+            type="button"
+            class="primary"
+            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+          >
+            Shop Now →
+          </button>
+        </div>
+
+        <div class="hero-image"></div>
+      </div>
+
+      <!-- Benefits -->
+      <div class="benefits">
+        <div>
+          ♡
+          <span>
+            <b>100% Original</b>
+            <small>Products</small>
+          </span>
+        </div>
+
+        <div>
+          🚚
+          <span>
+            <b>Fast & Secure</b>
+            <small>Shipping</small>
+          </span>
+        </div>
+
+        <div>
+          ⟳
+          <span>
+            <b>Easy Returns</b>
+            <small>Within 7 Days</small>
+          </span>
+        </div>
+
+        <div>
+          ☏
+          <span>
+            <b>Customer Support</b>
+            <small>Here to help</small>
+          </span>
+        </div>
+      </div>
+
+      <!-- Shop by Brands -->
+      <section class="section" id="brands">
+        <div class="section-title">
+          <div>
+            <h2>Shop by Brands</h2>
+            <p>Discover your favourite beauty brands</p>
+          </div>
+        </div>
+
+        <div class="brands">
+          <button type="button" onclick="filterBrand('L’Oréal')">
+            L'ORÉAL <small>PARIS</small>
+          </button>
+
+          <button type="button" onclick="filterBrand('Maybelline')">
+            MAYBELLINE <small>NEW YORK</small>
+          </button>
+
+          <button type="button" onclick="filterBrand('NYX')">
+            NYX <small>PROFESSIONAL MAKEUP</small>
+          </button>
+
+          <button type="button" onclick="filterBrand('Pond’s')">
+            POND'S
+          </button>
+
+          <button type="button" onclick="filterBrand('Lakmé')">
+            LAKMÉ
+          </button>
+
+          <button type="button" onclick="filterBrand('')">
+            ✿ ALL BRANDS
+          </button>
+        </div>
+      </section>
+
+      <!-- Shop by Category -->
+      <section class="section" id="categories">
+        <div class="section-title">
+          <div>
+            <h2>Shop by Category</h2>
+            <p>Everything your beauty routine needs</p>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <button type="button" onclick="filterCategory('Lipstick')">
+            💄 <span>Lipstick</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Lip Tint')">
+            💋 <span>Lip Tint</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Face Makeup')">
+            ✨ <span>Face Makeup</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Eye Makeup')">
+            👁️ <span>Eye Makeup</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Skincare')">
+            🧴 <span>Skincare</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Haircare')">
+            💆 <span>Haircare</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Nails')">
+            💅 <span>Press-on Nails</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('Combo Offers')">
+            🎁 <span>Combo Offers</span>
+          </button>
+
+          <button type="button" onclick="filterUnder250()">
+            🏷️ <span>Under ₹250</span>
+          </button>
+
+          <button type="button" onclick="filterCategory('All')">
+            🌸 <span>All Products</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="section" id="products">
+        <div class="section-title">
+          <div>
+            <h2>Featured Products</h2>
+            <p>Little things that make you glow</p>
+          </div>
+
+          <select id="sort" onchange="renderProducts()">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+
+      
+<!-- Beauty Videos -->
+<section class="section" id="beauty-videos">
+
+  <h2>The Glowora Beauty Studio</h2>
+  <p>Quick inspiration for your daily beauty routine</p>
+
+  <div class="video-grid">
+
+    <!-- Lipstick Tutorial -->
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID_1"
+          title="Perfect Lipstick Application"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div>
+        <h3>Perfect Lipstick Application</h3>
+        <p>Learn how to apply lipstick for a neat, defined finish.</p>
+        <a href="https://www.youtube.com/watch?v=i5-GV5TqAaM&pp=ygUVaG93IHRvIGFwcGx5IGxpcHN0aWNr"
+           target="_blank" rel="noopener noreferrer">
+          Watch on YouTube ↗
+        </a>
+      </div>
+    </article>
+ 
+
+  <p class="video-note">
+    Discover beauty tips and tutorials with Glowora.
+  </p>
+
+</section>
+
+
+      <!-- Newsletter -->
+      <section class="newsletter" id="newsletter-section">
+        <div>
+          <h2>A little glow in your inbox</h2>
+          <p>Beauty tips, new launches and special offers.</p>
+        </div>
+
+        <form id="newsletter">
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email address"
+            required
+          >
+          <button type="submit" class="primary">Subscribe</button>
+        </form>
+      </section>
+
+      <!-- Contact Us Button -->
+      <section class="contact-cta">
+        <h2>We’re Here to Help 💗</h2>
+        <p>
+          Questions about products, orders or beauty recommendations?
+        </p>
+
+        <button
+          type="button"
+          class="primary"
+          onclick="showPage('contact')"
+        >
+          Contact Us
+        </button>
+      </section>
+
+      <!-- About Glowora -->
+      <section class="about" id="about">
+        <span>❀</span>
+
+        <div>
+          <h2>About Glowora</h2>
+          <p>
+            Glowora brings makeup, skincare, haircare and beauty
+            essentials together in one place. Discover everyday
+            favourites, affordable finds and exciting combo offers
+            to express your unique glow.
+
+
+<h1>Beauty Begins With You!</h1>
+<p>
+Welcome to our trusted destination for beauty, skincare, makeup, and personal care products. We believe that beauty is not just about appearance; it is about confidence, self-care, and expressing your unique personality.
+
+Our goal is to make beauty accessible to everyone by offering a carefully selected range of cosmetics and beauty essentials that help you look good, feel confident, and celebrate your natural beauty.
+</p>
+<h1>Who We Are</h1>
+<p>
+ We are passionate about beauty and dedicated to helping our customers discover products that suit their individual needs and preferences.
+
+Whether you are looking for everyday makeup, skincare essentials, lipsticks, foundations, perfumes, hair care products, or beauty accessories, we aim to provide a convenient and enjoyable shopping experience all in one place.
+
+We believe every customer deserves quality products, friendly service, and great value for money. That is why we focus on bringing together beauty essentials for different styles, skin needs, occasions, and budgets.
+</p>
+<h1>Our Mission</h1>
+          <p>
+Our mission is to provide a wide variety of beauty and personal care products while making every shopping experience simple, enjoyable, and satisfying.
+</p>
+<br>
+<b>We strive to:</b>
+<br>
+<br>- Offer a diverse selection of cosmetics and beauty essentials.</br>
+<br>- Help customers discover products that suit their needs.</br>
+<br>- Provide friendly customer service and a comfortable shopping experience.</br>
+<br>- Deliver value through quality products and fair pricing.</br>
+<br>- Encourage self-confidence, self-expression, and everyday self-care.</br>
+
+<h1> Our Vision</h1>
+<p>
+Our vision is to become a trusted and preferred destination for cosmetics and beauty products, inspiring people to feel confident and beautiful in their own way.
+
+We aim to build lasting relationships with our customers through trust, transparency, quality, and a genuine passion for beauty.
+
+<h1>What We Offer</h1>
+
+<b>Explore our collection of beauty and personal care essentials:</b>
+<br>
+<br>- Makeup Products: Lipsticks, foundations, concealers, eyeliners, mascaras, blushes, and more.</br>
+<br>- Skincare Products: Face washes, moisturizers, serums, sunscreens, face masks, and other skincare essentials.</br>
+<br>- Hair Care Products: Shampoos, conditioners, hair oils, styling products, and treatments.</br>
+<br>- Fragrances: Perfumes, body mists, and refreshing fragrance products.</br>
+<br>- Personal Care: Everyday hygiene, body care, and grooming essentials.</br>
+<br>- Beauty Accessories: Makeup brushes, sponges, applicators, and other beauty tools.</br>
+<br>
+Our product selection is designed to help you find the right essentials for your daily routine, special occasions, and personal beauty preferences.
+
+<h1>Why Choose Us?</h1>
+
+<b>Quality You Can Trust</b></br>
+<br>
+We aim to offer products sourced from reliable suppliers and provide clear product information so you can shop with confidence.</br>
+<br>
+<b>Variety for Every Beauty Need</b><br>
+<br>
+From simple everyday looks to glamorous occasion makeup, discover products for different preferences and styles.<br>
+<br>
+<b>Affordable Beauty</b><br>
+<br>
+We believe beauty should be accessible, with options for different budgets and needs.<br>
+<br>
+<b>Customer Satisfaction</b><br>
+<br>
+Your happiness matters to us. We strive to provide helpful service and make your shopping experience pleasant from start to finish.<br>
+<br>
+<b>Beauty for Everyone</b><br>
+<br>
+We celebrate individuality and believe everyone deserves to feel confident, comfortable, and beautiful.<br>
+<br>
+<b> Our Promise to You</b><br>
+<br>
+Your trust is important to us. We are committed to providing a welcoming shopping experience, useful product information, and attentive customer support.
+
+We continuously look for ways to improve our collection and service so you can discover beauty products that fit your lifestyle.<br>
+<br>
+<b>Join Our Beauty Community</b><br>
+<br>
+Thank you for choosing us as part of your beauty journey. Whether you are refreshing your daily routine or exploring a new look, we are here to help you find your beauty essentials.
+
+Discover your favourites, express your style, and let your confidence shine.<br>
+<br>
+<b>Your Beauty, Your Style, Your Confidence</b><br>
+<br>
+Shop with us and celebrate the beauty that makes you unique!
+          </p>
+        </div>
+      </section>
+
+    </section>
+    <!-- ================= END HOME PAGE ================= -->
+
+
+    
+            maxlength="100"
+            placeholder="Enter your full name"
+          >
+<!-- ================= CONTACT PAGE ================= -->
+    <section id="contact" class="page hidden section">
+      <div class="contact-form-box">
+
+        <button
+          type="button"
+          class="back-button"
+          onclick="showPage('home')"
+        >
+          ← Back to Home
+        </button>
+
+        <h2>Contact Glowora 💗</h2>
+        <p>Send us a message. We’d love to hear from you!</p>
+
+        <form id="contactForm">
+          <label for="contactName">Full Name</label>
+          <input
+            id="contactName"
+            name="name"
+            type="text"
+            required
+          <label for="contactPhone">Contact Number</label>
+          <input
+            id="contactPhone"
+            name="phone"
+            type="tel"
+            required
+            maxlength="20"
+            placeholder="Enter your mobile number"
+          >
+
+          <label for="contactEmail">Email ID</label>
+          <input
+            id="contactEmail"
+            name="email"
+            type="email"
+            required
+            maxlength="150"
+            placeholder="Enter your email address"
+          >
+
+          <label for="contactMessage">Message</label>
+          <textarea
+            id="contactMessage"
+            name="message"
+            required
+            maxlength="2000"
+            placeholder="How can we help you?"
+          ></textarea>
+
+          <button type="submit" class="primary">
+            Send Message
+          </button>
+        </form>
+
+      </div>
+    </section>
+    <!-- ================= END CONTACT PAGE ================= -->
+
+
+    <!-- ================= PRODUCT DETAILS PAGE ================= -->
+    <section id="product" class="page section hidden">
+      <button
+        type="button"
+        class="back"
+        onclick="showPage('home')"
+      >
+        ← Continue Shopping
+      </button>
+
+      <div class="product-detail">
+        <img id="detailImage" alt="Product">
+
+        <div>
+          <p class="eyebrow">GLOWORA BEAUTY ESSENTIAL</p>
+          <h1 id="detailName"></h1>
+          <p id="detailBrand"></p>
+          <p class="rating">★★★★★ <span id="detailRating"></span></p>
+          <h2 id="detailPrice"></h2>
+          <p id="detailDescription"></p>
+
+          <label>Quantity</label>
+
+          <div class="quantity">
+            <button type="button" onclick="changeDetailQty(-1)">−</button>
+            <b id="detailQty">1</b>
+            <button type="button" onclick="changeDetailQty(1)">+</button>
+          </div>
+
+          <button
+            type="button"
+            class="primary wide"
+            onclick="addDetailToCart()"
+          >
+            Add to Cart
+          </button>
+
+          <button
+            type="button"
+            class="secondary wide"
+            onclick="toggleDetailWish()"
+          >
+            ♡ Add to Wishlist
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= WISHLIST PAGE ================= -->
+    <section id="wishlist" class="page section hidden">
+      <h1>My Wishlist <span id="wishHeading">(0)</span></h1>
+      <div id="wishlistItems" class="list"></div>
+    </section>
+
+
+    <!-- ================= CART PAGE ================= -->
+    <section id="cart" class="page section hidden">
+      <h1>My Cart</h1>
+
+      <div class="cart-layout">
+        <div id="cartItems" class="list"></div>
+
+        <aside class="summary">
+          <h2>Price Details</h2>
+
+          <p>Subtotal <b id="subtotal">₹0</b></p>
+          <p>Shipping <b id="shipping">₹0</b></p>
+
+          <hr>
+
+          <p>Total <b id="total">₹0</b></p>
+
+          <button
+            type="button"
+            class="primary wide"
+            onclick="checkout()"
+          >
+            Proceed to Checkout
+          </button>
+        </aside>
+      </div>
+    </section>
+
+
+    <!-- ================= LOGIN PAGE ================= -->
+    <section id="login" class="page hidden login">
+      <div class="login-art">
+        <span>❀</span>
+        <h1>Welcome Back!</h1>
+        <p>Your beauty journey continues here.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <p class="eyebrow">WELCOME TO GLOWORA</p>
+        <h1>Login</h1>
+
+        <label>
+          Email or Phone Number
+          <input
+            required
+            type="text"
+            placeholder="Enter your email or phone"
+          >
+        </label>
+
+        <label>
+          Password
+          <input
+            required
+            type="password"
+            minlength="4"
+            placeholder="Enter your password"
+          >
+        </label>
+
+        <button type="submit" class="primary wide">Login</button>
+
+        <p class="muted">
+          Demo only: real accounts require a backend.
+        </p>
+      </form>
+    </section>
+
+
+    <!-- ================= ADMIN PAGE ================= -->
+    <section id="admin" class="page hidden admin">
+      <aside class="admin-side">
+        <h2>❀ Glowora <small>ADMIN</small></h2>
+
+        <button type="button" onclick="showAdmin('dashboard')">
+          Dashboard
+        </button>
+
+        <button type="button" onclick="showAdmin('products')">
+          Products
+        </button>
+
+        <button type="button" onclick="showAdmin('orders')">
+          Orders
+        </button>
+
+        <button type="button" onclick="showAdmin('customers')">
+          Customers
+        </button>
+
+        <button type="button" onclick="showPage('home')">
+          Back to Store
+        </button>
+      </aside>
+
+      <div class="admin-main">
+        <h1 id="adminTitle">Dashboard</h1>
+        <div id="adminContent"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <h2>❀ Glowora</h2>
+    <p>Beauty · Care · You</p>
+    <p>© 2026 Glowora Cosmetics. website.</p>
+  </footer>
+
+  <!-- Notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
